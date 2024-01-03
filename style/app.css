@@ -83,6 +83,11 @@ a {
     font-size: 20px;
 }
 
+.hints {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
 .board-container {
     display: flex;
     justify-content: center;
