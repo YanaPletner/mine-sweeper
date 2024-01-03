@@ -86,7 +86,7 @@ function showNegsNum(board, idx, jdx) {
                 currCell.innerText = `${minesNegsCount[i][j]}`
 
                 if (currCell.innerText === '0') currCell.innerText = EMPTY
-                currCell.style.backgroundColor = 'rgb(243, 135, 151)'
+                currCell.style.backgroundColor = 'rgb(222, 94, 167)'
             }
         }
     }
@@ -109,7 +109,7 @@ function onCellMarked(elCell, ev, i, j) {
             }
 
             if (gGame.totalFlags >= 0) {
-                elCell.style.backgroundColor = rgb(216, 138, 172)//'lightpink'
+                elCell.style.backgroundColor = 'rgb(245, 169, 212)'
                 elCell.style.cursor = 'pointer'
 
                 var flagsCount = document.querySelector('.flag-count')
@@ -137,7 +137,7 @@ function onCellClicked(elCell, i, j) {
 
     if (gGame.cellClickCount === 1) {
         createMines(0, gBoard)
-        elCell.style.backgroundColor = 'rgb(243, 135, 151)'
+        elCell.style.backgroundColor = 'rgb(222, 94, 167)'
 
     } else {
         placeMinesRandomly(gBoard)

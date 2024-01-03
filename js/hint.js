@@ -38,7 +38,7 @@ function showhint(board, idx, jdx) {
             setTimeout(() => {
                 board[idx][jdx] = ''
                 elCell.innerText = ''
-                elCell.style.backgroundColor = 'rgb(216, 138, 172)'//'lightpink'
+                elCell.style.backgroundColor = 'rgb(229, 158, 202)'
 
             }, 1000)
 
