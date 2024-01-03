@@ -50,8 +50,6 @@ function showMines(board) {
             if (board[i][j] === MINE) {
                 var currCell = document.querySelector(`.cell-${i}-${j}`)
                 currCell.innerText = MINE
-                // renderCell({ i, j }, MINE)
-                // showNegsNum(gBoard, i, j)
                 currCell.style.backgroundColor = 'lightsalmon'
 
             }

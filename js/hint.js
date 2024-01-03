@@ -28,17 +28,18 @@ function showhint(board, idx, jdx) {
                 renderCell({ i, j }, MINE)
             }
 
+            // if (board[i][j] === HINT) {
+            //     elCell.innerText = HINT
+            //     renderCell({ i, j }, HINT)
+            // }
+
             elCell.style.backgroundColor = 'lightyellow'
 
             setTimeout(() => {
                 board[idx][jdx] = ''
                 elCell.innerText = ''
-                // if (board[i][j] === HINT) {
-                //     // elCell.innerText = HINT
-                //     // renderCell({ i, j }, HINT)
-                // }
-                // if (board[i][j] === MINE) renderCell({ i, j }, '')
                 elCell.style.backgroundColor = 'lightpink'
+
             }, 1000)
 
 
@@ -50,6 +51,7 @@ function makeHintsArr(board) {
     for (var i = 0; i < gGame.totalHints; i++) {
         var idx = getRandomIntInclusive(0, board.length - 1)
         var jdx = getRandomIntInclusive(0, board.length - 1)
+
         while (board[idx][jdx] === MINE) {
             idx = getRandomIntInclusive(0, board.length - 1)
             jdx = getRandomIntInclusive(0, board.length - 1)
@@ -57,6 +59,7 @@ function makeHintsArr(board) {
         hints.push({ location: { i: idx, j: jdx } })
     }
 }
+
 
 function setHints(hints, board) {
     for (var i = 0; i < hints.length; i++) {

@@ -133,6 +133,8 @@ function onCellClicked(elCell, i, j) {
         flagsCount.innerText = `${gGame.totalFlags}`
     }
 
+
+
     if (gGame.cellClickCount === 1) {
         createMines(0, gBoard)
         elCell.style.backgroundColor = 'rgb(243, 135, 151)'
@@ -141,11 +143,12 @@ function onCellClicked(elCell, i, j) {
         placeMinesRandomly(gBoard)
         setMinesNegsCount(gBoard.length)
         showNegsNum(gBoard, i, j)
-
         if (gBoard[i][j] === HINT) {
             showhint(gBoard, i, j)
         }
     }
+
+
 
     if (gBoard[i][j] === MINE && gGame.cellClickCount !== 1) {
         renderCell({ i, j }, MINE)
@@ -165,6 +168,7 @@ function onCellClicked(elCell, i, j) {
             const sadFace = document.querySelector('.life')
             sadFace.innerText = '😞'
             sadFace.style.fontSize = "40px"
+            gGame.isOn = false
         }
 
 
@@ -175,7 +179,7 @@ function onCellClicked(elCell, i, j) {
 
 function checkVictory() {
     var numOfcells = gBoard.length ** 2
-    if (gGame.cellClickCount > numOfcells - gGame.totalMines + 2) {
+    if (gGame.cellClickCount >= numOfcells + gGame.totalHints + 1) {
         const gameOver = document.querySelector('.end')
         gameOver.classList.remove('hidden')
         const happyFace = document.querySelector('.life')
