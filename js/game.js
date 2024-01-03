@@ -109,7 +109,7 @@ function onCellMarked(elCell, ev, i, j) {
             }
 
             if (gGame.totalFlags >= 0) {
-                elCell.style.backgroundColor = 'lightpink'
+                elCell.style.backgroundColor = rgb(216, 138, 172)//'lightpink'
                 elCell.style.cursor = 'pointer'
 
                 var flagsCount = document.querySelector('.flag-count')

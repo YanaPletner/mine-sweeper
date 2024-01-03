@@ -39,7 +39,8 @@ h2 {
 button {
     width: 80px;
     height: 30px;
-    background-color: lightpink;
+    background-color: rgb(216, 138, 172);
+    /*lightpink;*/
     border: 0;
     border-radius: 7px;
     font-size: 15px;
@@ -100,14 +101,15 @@ td {
     font-size: 20px;
     width: 30px;
     height: 30px;
-    background-color: lightpink;
+    background-color: rgb(216, 138, 172);
+    /*lightpink;*/
     border-radius: 7px;
     transition: 0.3s;
 }
 
 button:hover,
 td:hover {
-    background-color: rgb(243, 135, 151);
+    background-color: rgb(245, 169, 212);
     transition: 0.3s;
 }
 
