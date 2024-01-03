@@ -11,18 +11,17 @@ function createMines(totalMines, board) {
     for (var i = 0; i < totalMines; i++) {
         var idx = getRandomIntInclusive(0, board.length - 1)
         var jdx = getRandomIntInclusive(0, board[0].length - 1)
-        if (gBoard[idx][jdx] === MINE) {
 
-            continue
+        while (gBoard[idx][jdx] === MINE) {
+            idx = getRandomIntInclusive(0, board.length - 1)
+            jdx = getRandomIntInclusive(0, board[0].length - 1)
         }
-
         gBoard[idx][jdx] = MINE
 
         var newMine = {
             location: { i: idx, j: jdx },
         }
         mines.push(newMine)
-
     }
 }
 

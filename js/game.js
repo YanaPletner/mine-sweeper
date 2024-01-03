@@ -3,30 +3,36 @@
 const EMPTY = ''
 const FLAG = '🚩'
 
+var gBoard
+var glevel
+
 var gGame = {
     score: 0,
     isOn: false,
     isMineShown: false,
-    totalFlags: 10,
-    totalMines: 5,
+    cellClickCount: 0,
     totalLife: 3,
-    cellClickCount: 0
+    totalHints: 3,
+    totalFlags: 10,
+    totalMines: 5
 }
 
-var gBoard
 
 function onInit(num) {
-    gGame.isOn = false
+    gGame.isOn = true
     gBoard = buildBoard(num)
     renderBoard(gBoard, '.board-container')
-    createMines(gGame.totalMines + num, gBoard)
-
+    createMines(gGame.totalMines, gBoard)
+    makeHintsArr(gBoard)
+    setHints(hints, gBoard)
     var flags = document.querySelector('.flag-count')
     flags.innerText = `${gGame.totalFlags}`
 
-    var sadFace = document.querySelector('.life')
-    sadFace.innerHTML = 'Life: <span id="life-1">❤️</span><span id="life-2">❤️</span><span id="life-3">❤️</span>'
-    sadFace.style.fontSize = '20px'
+    var life = document.querySelector('.life')
+    life.innerHTML = 'Life: <span id="life-1">❤️</span>' +
+        '<span id="life-2">❤️</span>' +
+        '<span id="life-3">❤️</span>'
+    life.style.fontSize = '20px'
 
     const gameOver = document.querySelector('.end')
     gameOver.classList.add('hidden')
@@ -56,7 +62,7 @@ function renderBoard(mat, selector) {
             const cell = mat[i][j]
             const className = `cell cell-${i}-${j}`
 
-            strHTML += `<td class="${className} " oncontextmenu="onCellMarked(this,event,${i},${j})" 
+            strHTML += `<td class="${className}" oncontextmenu="onCellMarked(this,event,${i},${j})" 
             onclick ="onCellClicked(this,${i},${j})">${cell}
             <span class="flag-${i}-${j}"></span></td>`
         }
@@ -66,6 +72,7 @@ function renderBoard(mat, selector) {
 
     const elContainer = document.querySelector(selector)
     elContainer.innerHTML = strHTML
+
 }
 
 
@@ -86,10 +93,10 @@ function showNegsNum(board, idx, jdx) {
 }
 
 function onCellMarked(elCell, ev, i, j) {
+    if (!gGame.isOn) return
     switch (ev.button) {
         case 2:
             ev.preventDefault()
-
             if (gBoard[i][j] === FLAG) {
                 gGame.totalFlags++
                 renderCell({ i, j }, EMPTY)
@@ -114,6 +121,7 @@ function onCellMarked(elCell, ev, i, j) {
 
 
 function onCellClicked(elCell, i, j) {
+    if (!gGame.isOn) return
     gGame.cellClickCount++
 
     if (gBoard[i][j] === FLAG) {
@@ -133,6 +141,10 @@ function onCellClicked(elCell, i, j) {
         placeMinesRandomly(gBoard)
         setMinesNegsCount(gBoard.length)
         showNegsNum(gBoard, i, j)
+
+        if (gBoard[i][j] === HINT) {
+            showhint(gBoard, i, j)
+        }
     }
 
     if (gBoard[i][j] === MINE && gGame.cellClickCount !== 1) {
@@ -153,22 +165,34 @@ function onCellClicked(elCell, i, j) {
             const sadFace = document.querySelector('.life')
             sadFace.innerText = '😞'
             sadFace.style.fontSize = "40px"
-            gGame.isOn = false
         }
+
+
+    }
+    checkVictory()
+}
+
+
+function checkVictory() {
+    var numOfcells = gBoard.length ** 2
+    if (gGame.cellClickCount > numOfcells - gGame.totalMines + 2) {
+        const gameOver = document.querySelector('.end')
+        gameOver.classList.remove('hidden')
+        const happyFace = document.querySelector('.life')
+        happyFace.innerText = '😊 Victory'
+        happyFace.style.fontSize = "40px"
+        gGame.isOn = false
     }
 }
 
 
 function playAgain(num) {
-    gGame.isOn = true
-    gGame.totalFlags = 10
-    gGame.totalMines = 5
-    gGame.totalLife = 3
     gGame.cellClickCount = 0
+    gGame.totalLife = 3
+    gGame.totalFlags = 10
     minesNegsCount = []
     mines = []
+    hints = []
     onInit(num)
 }
-
-
 
