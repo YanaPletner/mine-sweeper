@@ -4,7 +4,6 @@ const EMPTY = ''
 const FLAG = '🚩'
 
 var gBoard
-// var glevel
 var gHintClickCount = 0
 var gMineClickCount = 0
 var gFlagClickCount = 0
@@ -191,10 +190,6 @@ function onCellClicked(elCell, i, j) {
 function checkVictory() {
     var numOfcells = gBoard.length ** 2
     var flagsOnBoard = 10 - gGame.totalFlags
-
-    console.log(numOfcells, flagsOnBoard, gHintClickCount, gMineClickCount)
-    console.log(numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard - 1)
-    console.log(gGame.cellClickCount)
     if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount + 1) {
         return true
     }
@@ -203,6 +198,9 @@ function checkVictory() {
 
 
 function playAgain(num) {
+    gHintClickCount = 0
+    gMineClickCount = 0
+    gFlagClickCount = 0
     gGame.cellClickCount = 0
     gGame.totalLife = 3
     gGame.totalFlags = 10
