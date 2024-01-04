@@ -4,8 +4,10 @@ const EMPTY = ''
 const FLAG = '🚩'
 
 var gBoard
-var glevel
+// var glevel
 var gHintClickCount = 0
+var gMineClickCount = 0
+var gFlagClickCount = 0
 
 var gGame = {
     score: 0,
@@ -136,8 +138,6 @@ function onCellClicked(elCell, i, j) {
         flagsCount.innerText = `${gGame.totalFlags}`
     }
 
-
-
     if (gGame.cellClickCount === 0) {
         console.log(gGame.cellClickCount)
         createMines(0, gBoard)
@@ -152,9 +152,8 @@ function onCellClicked(elCell, i, j) {
         }
     }
 
-
-
     if (gBoard[i][j] === MINE && gGame.cellClickCount !== 1) {
+        gMineClickCount++
         renderCell({ i, j }, MINE)
         showNegsNum(gBoard, i, j)
         elCell.style.backgroundColor = "lightsalmon"
@@ -177,7 +176,8 @@ function onCellClicked(elCell, i, j) {
 
 
     }
-    if (checkVictory(elCell)) {
+
+    if (checkVictory()) {
         const gameOver = document.querySelector('.end')
         gameOver.classList.remove('hidden')
         const happyFace = document.querySelector('.life')
@@ -188,18 +188,16 @@ function onCellClicked(elCell, i, j) {
 }
 
 
-function checkVictory(cell) {
+function checkVictory() {
     var numOfcells = gBoard.length ** 2
-    var mineOnBoard = 0
-    var flagsOnBoard = 0
+    var flagsOnBoard = 10 - gGame.totalFlags
 
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[i].length; j++) {
-            if (cell.innerHTML === MINE) mineOnBoard++
-            if (cell.innerHTML === MINE) flagsOnBoard++
-        }
+    console.log(numOfcells, flagsOnBoard, gHintClickCount, gMineClickCount)
+    console.log(numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard - 1)
+    console.log(gGame.cellClickCount)
+    if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount + 1) {
+        return true
     }
-    if (mineOnBoard === 0 && gGame.cellClickCount === numOfcells - flagsOnBoard + gHintClickCount) return true
 }
 
 
