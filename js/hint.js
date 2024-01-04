@@ -28,11 +28,6 @@ function showhint(board, idx, jdx) {
                 renderCell({ i, j }, MINE)
             }
 
-            // if (board[i][j] === HINT) {
-            //     elCell.innerText = HINT
-            //     renderCell({ i, j }, HINT)
-            // }
-
             elCell.style.backgroundColor = 'lightyellow'
 
             setTimeout(() => {
