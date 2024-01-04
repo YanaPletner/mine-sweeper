@@ -5,6 +5,7 @@ const FLAG = '🚩'
 
 var gBoard
 var glevel
+var gHintClickCount = 0
 
 var gGame = {
     score: 0,
@@ -109,7 +110,7 @@ function onCellMarked(elCell, ev, i, j) {
             }
 
             if (gGame.totalFlags >= 0) {
-                elCell.style.backgroundColor = 'rgb(245, 169, 212)'
+                elCell.style.backgroundColor = 'rgb(229, 158, 202)'
                 elCell.style.cursor = 'pointer'
 
                 var flagsCount = document.querySelector('.flag-count')
@@ -124,6 +125,8 @@ function onCellClicked(elCell, i, j) {
     if (!gGame.isOn) return
     gGame.cellClickCount++
 
+    if (elCell.innerHTML === HINT) gHintClickCount++
+
     if (gBoard[i][j] === FLAG) {
         gGame.totalFlags++
         renderCell({ i, j }, EMPTY)
@@ -135,7 +138,8 @@ function onCellClicked(elCell, i, j) {
 
 
 
-    if (gGame.cellClickCount === 1) {
+    if (gGame.cellClickCount === 0) {
+        console.log(gGame.cellClickCount)
         createMines(0, gBoard)
         elCell.style.backgroundColor = 'rgb(222, 94, 167)'
 
@@ -173,13 +177,7 @@ function onCellClicked(elCell, i, j) {
 
 
     }
-    checkVictory()
-}
-
-
-function checkVictory() {
-    var numOfcells = gBoard.length ** 2
-    if (gGame.cellClickCount >= numOfcells + gGame.totalHints + 1) {
+    if (checkVictory(elCell)) {
         const gameOver = document.querySelector('.end')
         gameOver.classList.remove('hidden')
         const happyFace = document.querySelector('.life')
@@ -188,6 +186,22 @@ function checkVictory() {
         gGame.isOn = false
     }
 }
+
+
+function checkVictory(cell) {
+    var numOfcells = gBoard.length ** 2
+    var mineOnBoard = 0
+    var flagsOnBoard = 0
+
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[i].length; j++) {
+            if (cell.innerHTML === MINE) mineOnBoard++
+            if (cell.innerHTML === MINE) flagsOnBoard++
+        }
+    }
+    if (mineOnBoard === 0 && gGame.cellClickCount === numOfcells - flagsOnBoard + gHintClickCount) return true
+}
+
 
 
 function playAgain(num) {
