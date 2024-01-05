@@ -11,6 +11,13 @@
 
 <body onload="onInit(8)">
     <h1>Mine Sweeper</h1>
+    <br><br>
+    <div>
+        <!-- <p class="txt">Enter Username: </p> -->
+        <input class="txt-box" type="text" placeholder="Enter Username">
+        <button class="save-txt-btn" onclick="addUserName() ">Save</button>
+    </div>
+    <br><br>
 
     <div class="level">
         <h2>Game level: </h2>
@@ -37,18 +44,27 @@
     </p>
     <br>
     <br>
+
     <div class="board-container"></div>
     <br>
+
     <div class="end hidden">
         <h2>Game Over</h2>
         <div class="play-again">
             <button onclick="playAgain(8)">Play Again</button>
         </div>
     </div>
+
+    <div class="players">
+        <p>Players: </p>
+        <div class="players-container"></div>
+    </div>
+
     <footer>Yana Pletner</footer>
     <script src="./js/utils.js"></script>
     <script src="./js/mine.js"></script>
     <script src="./js/hint.js"></script>
+    <script src="./js/localstorage.js"></script>
     <script src="./js/game.js"></script>
 
 </body>

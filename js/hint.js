@@ -14,29 +14,33 @@ function showhint(board, idx, jdx) {
 
             if (j < 0 || j >= board[i].length) continue
 
+            if (board[i][j] === HINT) continue
+
             showNegsNum(gBoard, i, j)
             const elCell = document.querySelector(`.cell-${i}-${j}`)
+            const elHintCell = document.querySelector(`.cell-${idx}-${jdx}`)
+            const flagsCount = document.querySelector('.flag-count')
 
             if (board[i][j] === FLAG) {
                 gGame.totalFlags++
-                var flagsCount = document.querySelector('.flag-count')
                 flagsCount.innerText = `${gGame.totalFlags}`
+
             }
 
-            if (board[i][j] === MINE) {
-                elCell.innerText = MINE
-                renderCell({ i, j }, MINE)
-            }
+            if (board[i][j] === MINE) elCell.innerText = MINE
 
             elCell.style.backgroundColor = 'lightyellow'
-
+            elHintCell.style.backgroundColor = 'lightyellow'
             setTimeout(() => {
+
                 board[idx][jdx] = ''
                 elCell.innerText = ''
+                elHintCell.innerText = ''
+                elHintCell.style.backgroundColor = 'rgb(229, 158, 202)'
                 elCell.style.backgroundColor = 'rgb(229, 158, 202)'
 
-            }, 1000)
 
+            }, 1000)
 
         }
     }
@@ -62,3 +66,4 @@ function setHints(hints, board) {
         renderCell({ i: hints[i].location.i, j: hints[i].location.j }, HINT)
     }
 }
+

@@ -17,13 +17,26 @@ h1 {
     margin-top: 60px;
 }
 
+.txt {
+    display: inline;
+    font-size: 15px;
+}
+
+.txt-box {
+    display: inline-block;
+    height: 22px;
+}
+
+.save-txt-btn {
+    height: 26px;
+}
+
 p {
     font-size: larger;
 }
 
 .rules-page {
-    margin: 40px 60px;
-
+    margin: 40px 80px;
 }
 
 h2 {
@@ -121,6 +134,11 @@ td:hover {
     width: 100px;
     height: 50px;
 }
+
+.players {
+    margin-top: 40px;
+}
+
 
 footer {
     margin-top: 100px;

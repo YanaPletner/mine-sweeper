@@ -99,15 +99,21 @@ function onCellMarked(elCell, ev, i, j) {
     switch (ev.button) {
         case 2:
             ev.preventDefault()
-            if (gBoard[i][j] === FLAG) {
-                gGame.totalFlags++
-                renderCell({ i, j }, EMPTY)
-                gBoard[i][j] = EMPTY
+            if (gBoard[i][j] === HINT) return
 
-            } else {
+            if (gBoard[i][j] === FLAG) {
+
+                gGame.totalFlags++
+
+                gBoard[i][j] = EMPTY
+                renderCell({ i, j }, EMPTY)
+            }
+
+
+            else {
                 gGame.totalFlags--
-                renderCell({ i, j }, FLAG)
                 gBoard[i][j] = FLAG
+                renderCell({ i, j }, FLAG)
             }
 
             if (gGame.totalFlags >= 0) {
@@ -117,6 +123,7 @@ function onCellMarked(elCell, ev, i, j) {
                 var flagsCount = document.querySelector('.flag-count')
                 flagsCount.innerText = `${gGame.totalFlags}`
             }
+
             break;
     }
 }
@@ -175,15 +182,15 @@ function onCellClicked(elCell, i, j) {
 
 
     }
-
-    if (checkVictory()) {
-        const gameOver = document.querySelector('.end')
-        gameOver.classList.remove('hidden')
-        const happyFace = document.querySelector('.life')
-        happyFace.innerText = '😊 Victory'
-        happyFace.style.fontSize = "40px"
-        gGame.isOn = false
-    }
+    checkVictory()
+    // if (checkVictory()) {
+    //     const gameOver = document.querySelector('.end')
+    //     gameOver.classList.remove('hidden')
+    //     const happyFace = document.querySelector('.life')
+    //     happyFace.innerText = '😊 Victory'
+    //     happyFace.style.fontSize = "40px"
+    //     gGame.isOn = false
+    // }
 }
 
 
@@ -191,7 +198,13 @@ function checkVictory() {
     var numOfcells = gBoard.length ** 2
     var flagsOnBoard = 10 - gGame.totalFlags
     if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount + 1) {
-        return true
+        // return true
+        const gameOver = document.querySelector('.end')
+        gameOver.classList.remove('hidden')
+        const happyFace = document.querySelector('.life')
+        happyFace.innerText = '😊 Victory'
+        happyFace.style.fontSize = "40px"
+        gGame.isOn = false
     }
 }
 
