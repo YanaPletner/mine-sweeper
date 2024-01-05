@@ -197,7 +197,7 @@ function onCellClicked(elCell, i, j) {
 function checkVictory() {
     var numOfcells = gBoard.length ** 2
     var flagsOnBoard = 10 - gGame.totalFlags
-    if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount + 1) {
+    if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount) {
         // return true
         const gameOver = document.querySelector('.end')
         gameOver.classList.remove('hidden')

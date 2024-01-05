@@ -60,12 +60,16 @@ button {
 
 
 .level-up {
+    display: inline;
+}
+
+.rules-reset {
     display: inline-block;
 }
 
-
 .rules {
     display: inline-block;
+    text-align: center;
     font-size: 50px;
     cursor: pointer;
 }
