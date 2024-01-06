@@ -12,7 +12,7 @@ function updateScore() {
     scoresArr.push(gBestScore)
     scoresArr.sort((p1, p2) => p1.localeCompare(p2))
 
-    var heighestScore = document.querySelector('.heighst-score')
+    var heighestScore = document.querySelector('.highest-score')
     heighestScore.innerText = scoresArr[0]
 
     localStorage.setItem('scores', JSON.stringify(scoresArr))
