@@ -45,6 +45,7 @@ function onInit(num) {
 
     var heighestScore = document.querySelector('.highest-score')
     heighestScore.innerText = scoresArr[0] ? scoresArr[0] : '0'
+    clearInterval(gTimeInterval)
 }
 
 
