@@ -4,7 +4,7 @@ const EMPTY = ''
 const FLAG = '🚩'
 
 var gBoard
-var gBestScore = 0
+var gBestScore = ''
 var gTimeInterval
 var gHintClickCount = 0
 var gMineClickCount = 0
@@ -21,11 +21,10 @@ var gGame = {
     totalMines: 5
 }
 
-
 function onInit(num) {
     gGame.isOn = true
-    updateScore()
-
+    var heighestScore = document.querySelector('.heighst-score')
+    heighestScore.innerText = scoresArr[0]
     gBoard = buildBoard(num)
     renderBoard(gBoard, '.board-container')
     createMines(gGame.totalMines, gBoard)
@@ -187,6 +186,8 @@ function checkVictory() {
     var flagsOnBoard = 10 - gGame.totalFlags
     if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount) {
         updateScore()
+        var heighestScore = document.querySelector('.heighst-score')
+        heighestScore.innerText = scoresArr[0]
         const gameOver = document.querySelector('.end')
         gameOver.classList.remove('hidden')
         const happyFace = document.querySelector('.life')
