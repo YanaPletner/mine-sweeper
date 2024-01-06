@@ -2,8 +2,7 @@
     color: black;
     text-align: center;
     Font-family: Lucida Bright, Georgia, serif;
-
-
+    cursor: default;
 }
 
 body {
@@ -71,11 +70,11 @@ button {
     display: inline-block;
     text-align: center;
     font-size: 50px;
-    cursor: pointer;
 }
 
 a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .reset {
@@ -83,6 +82,11 @@ a {
     font-size: 40px;
     cursor: pointer;
     width: 44px;
+}
+
+.score {
+    margin-top: 40px;
+
 }
 
 .flags {
@@ -98,6 +102,11 @@ a {
 .life {
     display: inline-block;
     font-size: 20px;
+}
+
+.time {
+    display: inline-block;
+    margin-left: 20px;
 }
 
 .hints {

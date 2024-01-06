@@ -26,14 +26,8 @@
             <button onclick="playAgain(4)">Beginner</button>
             <button onclick="playAgain(8)"> Medium</button>
             <button onclick="playAgain(12)">Expert </button>
-
-            <!-- <div class="rules" title="rules"><a href="rules.html" target="_blank">📜</a>
-            </div>
-
-            <div class="reset" title="reset" onclick="playAgain(8)">
-                🌸
-            </div> -->
         </div>
+
         <div class="rules-reset">
             <div class="rules" title="rules"><a href="rules.html" target="_blank">📜</a>
             </div>
@@ -42,7 +36,10 @@
                 🌸
             </div>
         </div>
-
+        <div class="score">
+            <p>Heighst Score: <span class="heighst-score">0</span></p>
+            <!-- <p>Score: <span class="score-count">0</span> </p> -->
+        </div>
     </div>
     <div class="flags">🚩: <span class="flag-count">10</span></div>
     <p class="life">Life:
@@ -50,6 +47,7 @@
         <span id="life-2">❤️</span>
         <span id="life-3">❤️</span>
     </p>
+    <p class="time">Timer: <span class="timer">0.000</span></p>
     <br>
     <br>
 
@@ -72,7 +70,7 @@
     <script src="./js/utils.js"></script>
     <script src="./js/mine.js"></script>
     <script src="./js/hint.js"></script>
-    <script src="./js/localstorage.js"></script>
+    <script src="./js/score.js"></script>
     <script src="./js/game.js"></script>
 
 </body>
