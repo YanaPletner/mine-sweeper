@@ -43,7 +43,7 @@ function makeHintsArr(board) {
         var idx = getRandomIntInclusive(0, board.length - 1)
         var jdx = getRandomIntInclusive(0, board.length - 1)
 
-        while (board[idx][jdx] === MINE) {
+        while (board[idx][jdx] === HINT) {
             idx = getRandomIntInclusive(0, board.length - 1)
             jdx = getRandomIntInclusive(0, board.length - 1)
         }
