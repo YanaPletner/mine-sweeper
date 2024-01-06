@@ -3,7 +3,7 @@
 const input = document.querySelector('.txt-box')
 const players = document.querySelector('.players-container')
 var userNamesArr = localStorage.getItem('userNames') ? JSON.parse(localStorage.getItem('userNames')) : []
-var scoresArr = localStorage.getItem('scores') ? JSON.parse(localStorage.getItem('scores')) : ['0']
+var scoresArr = localStorage.getItem('scores') ? JSON.parse(localStorage.getItem('scores')) : []
 
 function updateScore() {
     var elTimer = document.querySelector('.timer')
