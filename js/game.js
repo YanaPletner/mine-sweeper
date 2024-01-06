@@ -25,8 +25,6 @@ function onInit(num) {
     gGame.isOn = true
     var heighestScore = document.querySelector('.highest-score')
     heighestScore.innerText = scoresArr[0]
-    // var heighestScore = document.querySelector('.highest-score')
-    // heighestScore.innerText = scoresArr.length ? scoresArr[0] : '0'
     gBoard = buildBoard(num)
     renderBoard(gBoard, '.board-container')
     createMines(gGame.totalMines, gBoard)
@@ -188,14 +186,12 @@ function checkVictory() {
     var flagsOnBoard = 10 - gGame.totalFlags
     if (numOfcells + gHintClickCount + gMineClickCount - flagsOnBoard <= gGame.cellClickCount) {
         updateScore()
-        var heighestScore = document.querySelector('.heighst-score')
-        heighestScore.innerText = scoresArr[0]
+        clearInterval(gTimeInterval)
         const gameOver = document.querySelector('.end')
         gameOver.classList.remove('hidden')
         const happyFace = document.querySelector('.life')
         happyFace.innerText = '😊 Victory'
         happyFace.style.fontSize = "40px"
-        clearInterval(gTimeInterval)
         gGame.isOn = false
     }
 }

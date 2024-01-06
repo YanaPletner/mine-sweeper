@@ -15,9 +15,6 @@ function updateScore() {
     var heighestScore = document.querySelector('.highest-score')
     heighestScore.innerText = scoresArr[0]
 
-    // var heighestScore = document.querySelector('.highest-score')
-    // heighestScore.innerText = scoresArr.length ? scoresArr[0] : '0'
-
     localStorage.setItem('scores', JSON.stringify(scoresArr))
 }
 
