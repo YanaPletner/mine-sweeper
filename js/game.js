@@ -24,7 +24,9 @@ var gGame = {
 function onInit(num) {
     gGame.isOn = true
     var heighestScore = document.querySelector('.highest-score')
-    heighestScore.innerText = scoresArr.length ? scoresArr[0] : '0'
+    heighestScore.innerText = scoresArr[0]
+    // var heighestScore = document.querySelector('.highest-score')
+    // heighestScore.innerText = scoresArr.length ? scoresArr[0] : '0'
     gBoard = buildBoard(num)
     renderBoard(gBoard, '.board-container')
     createMines(gGame.totalMines, gBoard)
