@@ -3,19 +3,23 @@
 const input = document.querySelector('.txt-box')
 const players = document.querySelector('.players-container')
 var userNamesArr = localStorage.getItem('userNames') ? JSON.parse(localStorage.getItem('userNames')) : []
-var scoresArr = localStorage.getItem('scores') ? JSON.parse(localStorage.getItem('scores')) : []
+
+var scoresArr = localStorage.getItem('scores') ? JSON.parse(localStorage.getItem('scores')) : ["0"]
 
 function updateScore() {
     var elTimer = document.querySelector('.timer')
     gBestScore = elTimer.innerText
-
     scoresArr.push(gBestScore)
     scoresArr.sort((p1, p2) => p1.localeCompare(p2))
+    localStorage.setItem('scores', JSON.stringify(scoresArr))
+    renderScore(scoresArr[1])
+}
+
+function renderScore(value) {
+
 
     var heighestScore = document.querySelector('.highest-score')
-    heighestScore.innerText = scoresArr[0]
-
-    localStorage.setItem('scores', JSON.stringify(scoresArr))
+    heighestScore.innerText = value
 }
 
 

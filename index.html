@@ -19,25 +19,28 @@
     <br><br>
 
     <div class="level">
-        <h2>Game level: </h2>
+        <div>
+            <h2>Game level: </h2>
 
-        <div class="level-up">
-            <button onclick="playAgain(4)">Beginner</button>
-            <button onclick="playAgain(8)"> Medium</button>
-            <button onclick="playAgain(12)">Expert </button>
-        </div>
-
-        <div class="rules-reset">
-            <div class="rules" title="rules"><a href="rules.html" target="_blank">📜</a>
+            <div class="level-up">
+                <button onclick="playAgain(4)">Beginner</button>
+                <button onclick="playAgain(8)"> Medium</button>
+                <button onclick="playAgain(12)">Expert </button>
             </div>
 
-            <div class="reset" title="reset" onclick="playAgain(8)">
-                🌸
+            <div class="rules-reset">
+                <div class="rules" title="rules"><a href="rules.html" target="_blank">📜</a>
+                </div>
+
+                <div class="reset" title="reset" onclick="playAgain(8)">
+                    🌸
+                </div>
             </div>
         </div>
-        <div class="score">
-            <p>Highest Score: <span class="highest-score">0</span></p>
-        </div>
+    </div>
+    <div class="score">
+        <p>Highest Score: <span class="highest-score"></span></p>
+    </div>
     </div>
     <div class="flags">🚩: <span class="flag-count">10</span></div>
     <p class="life">Life:
