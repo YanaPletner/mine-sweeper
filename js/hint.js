@@ -17,7 +17,7 @@ function showhint(board, idx, jdx) {
             if (board[i][j] === HINT) continue
             if (board[i][j] === FLAG) continue
 
-            showNegsNum(gBoard, i, j)
+            showNegsNum(board, i, j)
             const elCell = document.querySelector(`.cell-${i}-${j}`)
             const elHintCell = document.querySelector(`.cell-${idx}-${jdx}`)
 
@@ -43,9 +43,10 @@ function makeHintsArr(board) {
         var idx = getRandomIntInclusive(0, board.length - 1)
         var jdx = getRandomIntInclusive(0, board.length - 1)
 
-        while (board[idx][jdx] === HINT) {
+        while (board[idx][jdx] === MINE || board[idx][jdx] === HINT) {
             idx = getRandomIntInclusive(0, board.length - 1)
             jdx = getRandomIntInclusive(0, board.length - 1)
+            console.log(board[idx][jdx])
         }
         hints.push({ location: { i: idx, j: jdx } })
     }
