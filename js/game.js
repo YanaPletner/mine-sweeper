@@ -27,7 +27,6 @@ var gGame = {
 function onInit(size) {
     gGame.isOn = true
     gLevel.SIZE = size
-
     gBoard = buildBoard(size)
     renderBoard(gBoard, '.board-container')
     renderHints()
@@ -231,9 +230,11 @@ function checkVictory(board) {
 
 
 function playAgain(size) {
+    gGame.cellClickNum = 0
     gGame.totalLife = 3
     gGame.totalFlags = 10
     mines = []
+    updateScore()
     onInit(size)
 }
 
