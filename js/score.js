@@ -1,11 +1,12 @@
 "use strict"
 
-const input = document.querySelector('.txt-box')
-const players = document.querySelector('.players-container')
-var userNamesArr = localStorage.getItem('userNames') ? JSON.parse(localStorage.getItem('userNames')) : []
+// const input = document.querySelector('.txt-box')
+// const players = document.querySelector('.players-container')
+// var userNamesArr = localStorage.getItem('userNames') ? JSON.parse(localStorage.getItem('userNames')) : []
 var scoresArr = localStorage.getItem('scores') ? JSON.parse(localStorage.getItem('scores')) : []
 
 function updateScore() {
+    // var scoresArr = localStorage.getItem('scores') ? JSON.parse(localStorage.getItem('scores')) : []
     var elTimer = document.querySelector('.timer')
     gBestScore = elTimer.innerText
     scoresArr.push(gBestScore)
@@ -20,24 +21,24 @@ function renderScore(value) {
 }
 
 
-function getUserName() {
-    for (var i = 0; i < userNamesArr.length; i++) {
-        var currName = userNamesArr[i]
-        renderUserName(currName)
-    }
-}
+// function getUserName() {
+//     for (var i = 0; i < userNamesArr.length; i++) {
+//         var currName = userNamesArr[i]
+//         renderUserName(currName)
+//     }
+// }
 
 
-function renderUserName(text) {
-    players.innerHTML += `<p>${text}</p>`
-}
+// function renderUserName(text) {
+//     players.innerHTML += `<p>${text}</p>`
+// }
 
 
-getUserName()
-function addUserName() {
-    userNamesArr.push(input.value)
-    localStorage.setItem('userNames', JSON.stringify(userNamesArr))
-    renderUserName(input.value)
-    input.value = ''
-}
+// getUserName()
+// function addUserName() {
+//     userNamesArr.push(input.value)
+//     localStorage.setItem('userNames', JSON.stringify(userNamesArr))
+//     renderUserName(input.value)
+//     input.value = ''
+// }
 

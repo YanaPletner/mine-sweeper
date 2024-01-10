@@ -12,20 +12,20 @@
 <body onload="onInit(8)">
     <h1>Mine Sweeper</h1>
     <br><br>
-    <div>
+    <!-- <div>
         <input class="txt-box" type="text" placeholder="Enter Username">
         <button class="save-txt-btn" onclick="addUserName()">Save</button>
     </div>
-    <br><br>
+    <br><br> -->
 
     <div class="level">
         <div>
             <h2>Game level: </h2>
 
             <div class="level-up">
-                <button onclick="playAgain(4)">Beginner</button>
-                <button onclick="playAgain(8)"> Medium</button>
-                <button onclick="playAgain(12)">Expert </button>
+                <button onclick="onInit(4)">Beginner</button>
+                <button onclick="onInit(8)"> Medium</button>
+                <button onclick="onInit(12)">Expert </button>
             </div>
 
             <div class="rules-reset">
@@ -43,11 +43,8 @@
     </div>
     </div>
     <div class="flags">🚩: <span class="flag-count">10</span></div>
-    <p class="life">Life:
-        <span id="life-1">❤️</span>
-        <span id="life-2">❤️</span>
-        <span id="life-3">❤️</span>
-    </p>
+    <p class="life"></p>
+    <p class="hints"></p>
     <p class="time">Timer: <span class="timer">0.000</span></p>
     <br>
     <br>
@@ -62,10 +59,10 @@
         </div>
     </div>
 
-    <div class="players">
+    <!-- <div class="players">
         <p>Players: </p>
         <div class="players-container"></div>
-    </div>
+    </div> -->
 
     <footer>Yana Pletner</footer>
     <script src="./js/utils.js"></script>

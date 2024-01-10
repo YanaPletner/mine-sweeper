@@ -95,6 +95,7 @@ a {
     font-size: 20px;
 }
 
+.hint,
 .flag-count {
     font-size: 20px;
 }
@@ -104,15 +105,17 @@ a {
     font-size: 20px;
 }
 
+.hints {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
 .time {
     display: inline-block;
     margin-left: 20px;
 }
 
-.hints {
-    margin-top: 20px;
-    font-size: 25px;
-}
 
 .board-container {
     display: flex;

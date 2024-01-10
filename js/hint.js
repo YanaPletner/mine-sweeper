@@ -2,61 +2,55 @@
 
 const HINT = '💡'
 
-var hints = []
+function renderHints() {
+    var elHints = document.querySelector('.hints')
+    elHints.innerHTML = ''
+    elHints.innerHTML += 'Hints: '
+    for (var i = 0; i < gGame.totalHints; i++) {
+        elHints.innerHTML += `<span class="hint" onclick="clickHint(this)">💡</span>`
+    }
+}
 
+function clickHint(el) {
+    if (!gGame.cellClickNum) return
+    gGame.isOnHint = true
+    el.classList.add('hidden')
+}
 
 function showhint(board, idx, jdx) {
     for (var i = idx - 1; i <= idx + 1; i++) {
-
         if (i < 0 || i >= board.length) continue
 
         for (var j = jdx - 1; j <= jdx + 1; j++) {
-
             if (j < 0 || j >= board[i].length) continue
+            if (board[i][j].isMarked) continue
 
-            if (board[i][j] === HINT) continue
-            if (board[i][j] === FLAG) continue
-
-            showNegsNum(board, i, j)
-            const elCell = document.querySelector(`.cell-${i}-${j}`)
-            const elHintCell = document.querySelector(`.cell-${idx}-${jdx}`)
-
-            if (board[i][j] === MINE) elCell.innerText = MINE
-
-            elCell.style.backgroundColor = 'lightyellow'
-            elHintCell.style.backgroundColor = 'lightyellow'
-
+            // expandShown(board, i, j)
+            var elCurrCell = document.querySelector(`.cell-${i}-${j}`)
+            elCurrCell.innerText = `${board[i][j].minesAroundCount}`
+            if (board[i][j].minesAroundCount === 0) elCurrCell.innerText = EMPTY
+            elCurrCell.style.backgroundColor = 'lightyellow'
+            if (board[i][j].isMine) renderCell({ i, j }, MINE)
+            // expandShown(board, i, j)
             setTimeout(() => {
-                board[idx][jdx] = ''
-                elCell.innerText = ''
-                elHintCell.innerText = ''
-                elHintCell.style.backgroundColor = 'rgb(229, 158, 202)'
-                elCell.style.backgroundColor = 'rgb(229, 158, 202)'
+                for (var i = idx - 1; i <= idx + 1; i++) {
+                    if (i < 0 || i >= board.length) continue
+                    for (var j = jdx - 1; j <= jdx + 1; j++) {
+                        if (j < 0 || j >= board[i].length) continue
+                        elCurrCell = document.querySelector(`.cell-${i}-${j}`)
+                        elCurrCell.innerText = ''
+                        elCurrCell.style.backgroundColor = 'rgb(229, 158, 202)'
+                        gGame.isOnHint = false
+                    }
+                }
             }, 1000)
 
         }
-    }
-}
 
-function makeHintsArr(board) {
-    for (var i = 0; i < gGame.totalHints; i++) {
-        var idx = getRandomIntInclusive(0, board.length - 1)
-        var jdx = getRandomIntInclusive(0, board.length - 1)
 
-        while (board[idx][jdx] === MINE || board[idx][jdx] === HINT) {
-            idx = getRandomIntInclusive(0, board.length - 1)
-            jdx = getRandomIntInclusive(0, board.length - 1)
-            console.log(board[idx][jdx])
-        }
-        hints.push({ location: { i: idx, j: jdx } })
     }
 }
 
 
-function setHints(hints, board) {
-    for (var i = 0; i < hints.length; i++) {
-        board[hints[i].location.i][hints[i].location.j] = HINT
-        renderCell({ i: hints[i].location.i, j: hints[i].location.j }, HINT)
-    }
-}
+
 
