@@ -12,7 +12,7 @@ function updateScore() {
     scoresArr.push(gBestScore)
     scoresArr.sort((p1, p2) => p1.localeCompare(p2))
     localStorage.setItem('scores', JSON.stringify(scoresArr))
-    renderScore(scoresArr[0])
+    renderScore(scoresArr[1])
 }
 
 function renderScore(value) {
