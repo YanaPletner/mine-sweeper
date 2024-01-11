@@ -40,6 +40,7 @@ function showhint(board, idx, jdx) {
                         elCurrCell = document.querySelector(`.cell-${i}-${j}`)
                         elCurrCell.innerText = ''
                         elCurrCell.style.backgroundColor = 'rgb(229, 158, 202)'
+                        board[i][j].isShown = false
                         gGame.isOnHint = false
                     }
                 }

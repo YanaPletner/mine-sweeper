@@ -36,8 +36,8 @@ function onInit(size) {
 
     const elGameOver = document.querySelector('.end')
     elGameOver.classList.add('hidden')
-    // var heighestScore = document.querySelector('.highest-score')
-    // heighestScore.innerText = scoresArr[0] ? scoresArr[0] : '0'
+    var heighestScore = document.querySelector('.highest-score')
+    heighestScore.innerText = scoresArr[0] ? scoresArr[0] : '0'
 
 }
 
